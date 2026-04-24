@@ -16,4 +16,22 @@ public class SmartWallet {
     public boolean isActive() {
         return isActive;
     }
+
+    public boolean deposit(double amount) {
+        if (amount <= 0) return false;
+
+        double cashback = 0;
+        if (amount > 100) {
+            cashback = amount * 0.01;
+        }
+
+        double totalDeposit = amount + cashback;
+
+        if (userType.equals("Standard") && (balance + totalDeposit > 5000)) {
+            return false;
+        }
+
+        balance += totalDeposit;
+        return true;
+    }
 }
