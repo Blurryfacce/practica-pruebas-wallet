@@ -34,4 +34,18 @@ public class SmartWallet {
         balance += totalDeposit;
         return true;
     }
+    
+    public boolean withdraw(double amount) {
+        if (amount <= 0 || amount > balance) {
+            return false;
+        }
+
+        balance -= amount;
+
+        if (balance == 0) {
+            isActive = false;
+        }
+
+        return true;
+    }
 }
